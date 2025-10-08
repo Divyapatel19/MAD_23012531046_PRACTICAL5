@@ -40,7 +40,7 @@ class MainActivity : ComponentActivity() {
                             LoginUI(onSignUpClicked = { isLoginScreen = false })
                         } else {
                             // Pass a lambda to navigate back to the Login screen
-                            RegisterUI() { isLoginScreen = true }
+                            RegisterUI( { isLoginScreen = true })
                         }
                     }
                 }

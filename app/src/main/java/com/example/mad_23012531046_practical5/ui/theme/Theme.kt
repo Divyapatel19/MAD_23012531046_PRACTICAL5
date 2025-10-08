@@ -9,20 +9,41 @@ import androidx.compose.material3.dynamicDarkColorScheme
 import androidx.compose.material3.dynamicLightColorScheme
 import androidx.compose.material3.lightColorScheme
 import androidx.compose.runtime.Composable
+import androidx.compose.ui.graphics.Color
 import androidx.compose.ui.platform.LocalContext
 
 private val DarkColorScheme = darkColorScheme(
-    primary = Purple80,
+    /*primary = Purple80,
     secondary = PurpleGrey80,
-    tertiary = Pink80
+    tertiary = Pink80,
+    background = DarkBackground,
+    surface = DarkCard,
+    onPrimary = Color.White,
+    onSecondary = Color.White,
+    onBackground = DarkText,
+    onSurface = DarkText*/
+    primary = gunipink,
+    secondary = blue,
+    background = DarkBackground,
+    surface = DarkSurface,
+    onPrimary = Color.White,
+    onSecondary = Color.White,
+    onBackground = DarkText,
+    onSurface = DarkText
 )
 
 private val LightColorScheme = lightColorScheme(
-    primary = Purple40,
+    /*primary = Purple40,
     secondary = PurpleGrey40,
-    tertiary = Pink40
+    tertiary = Pink40,
 
-    /* Other default colors to override
+    background = LightBackground,
+    surface = LightCard,
+    onPrimary = Color.White,
+    onSecondary = Color.White,
+    onBackground = LightText,
+    onSurface = LightText
+    Other default colors to override
     background = Color(0xFFFFFBFE),
     surface = Color(0xFFFFFBFE),
     onPrimary = Color.White,
@@ -30,7 +51,15 @@ private val LightColorScheme = lightColorScheme(
     onTertiary = Color.White,
     onBackground = Color(0xFF1C1B1F),
     onSurface = Color(0xFF1C1B1F),
-    */
+     */
+    primary = gunipink,
+    secondary = blue,
+    background = LightBackground,
+    surface = LightSurface,
+    onPrimary = Color.White,
+    onSecondary = Color.White,
+    onBackground = LightText,
+    onSurface = LightText
 )
 
 @Composable
@@ -52,7 +81,10 @@ fun MAD_23012531046_PRACTICAL5Theme(
 
     MaterialTheme(
         colorScheme = colorScheme,
-        typography = Typography,
+        typography = Typography.copy(
+            bodyMedium = Typography.bodyMedium.copy(color = colorScheme.onBackground),
+            labelLarge = Typography.labelLarge.copy(color = Color.White)
+        ),
         content = content
     )
 }

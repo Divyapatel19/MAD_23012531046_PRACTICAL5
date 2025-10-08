@@ -37,22 +37,20 @@ import com.example.mad_23012531046_practical5.ui.theme.MAD_23012531046_PRACTICAL
 import com.example.mad_23012531046_practical5.ui.theme.blue
 import com.example.mad_23012531046_practical5.ui.theme.gunipink
 
-
+// SOLUTION 1: Modify the function to accept two distinct actions
 @Composable
-fun RegisterUI(onloginClicked: () -> Unit) {
+fun RegisterUI(onLoginClicked: () -> Unit) {
     var name by remember { mutableStateOf("") }
     var phonenumber by remember { mutableStateOf("") }
     var city by remember { mutableStateOf("") }
     var email by remember { mutableStateOf("") }
     var password by remember { mutableStateOf("") }
     var confirmPassword by remember { mutableStateOf("") }
-    val scrollState = rememberScrollState()
 
     Column(
         modifier = Modifier
             .fillMaxSize()
             .padding(20.dp)
-            // Added a scroll state to prevent overflow on small screens
             .verticalScroll(rememberScrollState())
     ) {
         Spacer(modifier = Modifier.height(10.dp))
@@ -61,8 +59,7 @@ fun RegisterUI(onloginClicked: () -> Unit) {
             painter = painterResource(id = R.drawable.guni_pink_logo),
             contentDescription = "Logo",
             modifier = Modifier
-                
-                .height(130.dp) // Adjusted height slightly
+                .height(130.dp)
                 .align(Alignment.CenterHorizontally)
         )
         Spacer(modifier = Modifier.height(10.dp))
@@ -70,144 +67,64 @@ fun RegisterUI(onloginClicked: () -> Unit) {
         Card(
             modifier = Modifier.fillMaxWidth(),
             shape = MaterialTheme.shapes.medium,
-            elevation = CardDefaults.cardElevation(defaultElevation = 8.dp) // Adjusted elevation
+            elevation = CardDefaults.cardElevation(defaultElevation = 8.dp)
         ) {
-            // This is the Column for all the content INSIDE the card
             Column(
                 modifier = Modifier.padding(20.dp),
                 horizontalAlignment = Alignment.CenterHorizontally
             ) {
-                // Each field is a Row, one after the other. NOT nested.
-                Row(
-                    modifier = Modifier.fillMaxWidth(),
-                    verticalAlignment = Alignment.CenterVertically
-                ) {
-                    Text(text = "Name", modifier = Modifier.width(100.dp), fontSize = 15.sp)
-                    FormField(
-                        label = "Name",
-                        textState = name,
-                        onTextField = { name = it }
-                    )
-                }
-
-                Spacer(modifier = Modifier.height(5.dp))
-
-                Row(
-                    modifier = Modifier.fillMaxWidth(),
-                    verticalAlignment = Alignment.CenterVertically
-                ) {
-                    Text(text = "Phone No.", modifier = Modifier.width(100.dp), fontSize = 15.sp)
-                    FormField(
-                        label = "Phone Number",
-                        textState = phonenumber,
-                        onTextField = { phonenumber = it }
-                    )
-                }
-
-                Spacer(modifier = Modifier.height(8.dp))
-
-                Row(
-                    modifier = Modifier.fillMaxWidth(),
-                    verticalAlignment = Alignment.CenterVertically
-                ) {
-                    Text(text = "City", modifier = Modifier.width(100.dp), fontSize = 15.sp)
-                    FormField(
-                        label = "City",
-                        textState = city,
-                        onTextField = { city = it }
-                    )
-                }
-
-                Spacer(modifier = Modifier.height(8.dp))
-
-                Row(
-                    modifier = Modifier.fillMaxWidth(),
-                    verticalAlignment = Alignment.CenterVertically
-                ) {
-                    Text(text = "Email", modifier = Modifier.width(100.dp), fontSize = 15.sp)
-                    FormField(
-                        label = "Email",
-                        textState = email,
-                        onTextField = { email = it }
-                    )
-                }
-
-                Spacer(modifier = Modifier.height(8.dp))
-
-                Row(
-                    modifier = Modifier.fillMaxWidth(),
-                    verticalAlignment = Alignment.CenterVertically
-                ) {
-                    Text(text = "Password", modifier = Modifier.width(100.dp), fontSize = 15.sp)
-                    FormField(
-                        label = "Password",
-                        textState = password,
-                        onTextField = { password = it },
-                        isPasswordField = true
-                    )
-                }
-
-                Spacer(modifier = Modifier.height(8.dp))
-
-                Row(
-                    modifier = Modifier.fillMaxWidth(),
-                    verticalAlignment = Alignment.CenterVertically
-                ) {
-                    Text(text = "Confirm Pwd", modifier = Modifier.width(100.dp), fontSize = 15.sp)
-                    FormField(
-                        label = "Confirm Password",
-                        textState = confirmPassword,
-                        onTextField = { confirmPassword = it },
-                        isPasswordField = true
-                    )
-                }
-
+                // ... (All your Row and FormField elements are correct)
+                Row(modifier=Modifier.fillMaxWidth(),verticalAlignment=Alignment.CenterVertically){Text(text="Name",modifier=Modifier.width(100.dp),fontSize=15.sp);FormField(label="Name",textState=name,onTextField={name=it})}
+                Spacer(modifier=Modifier.height(5.dp))
+                Row(modifier=Modifier.fillMaxWidth(),verticalAlignment=Alignment.CenterVertically){Text(text="Phone No.",modifier=Modifier.width(100.dp),fontSize=15.sp);FormField(label="Phone Number",textState=phonenumber,onTextField={phonenumber=it})}
+                Spacer(modifier=Modifier.height(8.dp))
+                Row(modifier=Modifier.fillMaxWidth(),verticalAlignment=Alignment.CenterVertically){Text(text="City",modifier=Modifier.width(100.dp),fontSize=15.sp);FormField(label="City",textState=city,onTextField={city=it})}
+                Spacer(modifier=Modifier.height(8.dp))
+                Row(modifier=Modifier.fillMaxWidth(),verticalAlignment=Alignment.CenterVertically){Text(text="Email",modifier=Modifier.width(100.dp),fontSize=15.sp);FormField(label="Email",textState=email,onTextField={email=it})}
+                Spacer(modifier=Modifier.height(8.dp))
+                Row(modifier=Modifier.fillMaxWidth(),verticalAlignment=Alignment.CenterVertically){Text(text="Password",modifier=Modifier.width(100.dp),fontSize=15.sp);FormField(label="Password",textState=password,onTextField={password=it},isPasswordField=true)}
+                Spacer(modifier=Modifier.height(8.dp))
+                Row(modifier=Modifier.fillMaxWidth(),verticalAlignment=Alignment.CenterVertically){Text(text="Confirm Pwd",modifier=Modifier.width(100.dp),fontSize=15.sp);FormField(label="Confirm Password",textState=confirmPassword,onTextField={confirmPassword=it},isPasswordField=true)}
                 Spacer(modifier = Modifier.height(10.dp))
 
-                // Register Button is here, inside the Card's Column
+                // SOLUTION 2: Assign the correct click action to the "Register" button.
                 Button(
-                    onClick = onloginClicked,
+                    onClick = {  }, // This should handle registration logic.
                     modifier = Modifier
                         .fillMaxWidth()
                         .height(50.dp),
                     colors = ButtonDefaults.buttonColors(
-                        // Using colorResource is safer
                         containerColor = blue
                     )
                 ) {
                     Text(text = "Register", fontSize = 18.sp)
                 }
-            } // Card's Column ends here
-        } // Card ends here
+            }
+        }
 
         Spacer(modifier = Modifier.height(20.dp))
 
-        // "Login" Row is here, outside the Card
+        // This is correct: the "LOGIN" button should navigate back.
         Row(
             modifier = Modifier.fillMaxWidth(),
             verticalAlignment = Alignment.CenterVertically,
             horizontalArrangement = Arrangement.Center
         ) {
-            Text("Do You have an account?")
-            TextButton(onClick = onloginClicked) {
-                Text(
-                    "LOGIN",
-                    fontWeight = FontWeight.Bold,
-                    color = gunipink
+            Text("Don you have an account?", color = MaterialTheme.colorScheme.onBackground)
+            TextButton(onClick = { onLoginClicked() }) {
+                Text("LOGIN", fontWeight = FontWeight.Bold, color = gunipink)
 
-
-                        )
 
             }
         }
-    } // Main parent Column ends here
+    }
 }
 
-// Preview function is here, at the top level
-@Preview(showBackground = true)
+// SOLUTION 3: Update the Preview to match the new function signature.
+@Preview(showBackground = false)
 @Composable
-fun showRegisterUI() {
-    MAD_23012531046_PRACTICAL5Theme(darkTheme = false) {
-        RegisterUI() { }
+fun showRegisterUI(){
+    MAD_23012531046_PRACTICAL5Theme(darkTheme = true) {
+        RegisterUI(onLoginClicked = {})
     }
 }

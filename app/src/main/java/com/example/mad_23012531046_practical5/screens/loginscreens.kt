@@ -12,7 +12,6 @@ import androidx.compose.foundation.layout.height
 import androidx.compose.foundation.layout.padding
 import androidx.compose.foundation.layout.width
 import androidx.compose.material3.Button
-// Import ButtonDefaults to access button colors
 import androidx.compose.material3.ButtonDefaults
 import androidx.compose.material3.Card
 import androidx.compose.material3.CardDefaults
@@ -73,7 +72,7 @@ fun LoginUI(onSignUpClicked: () -> Unit) {
                     modifier = Modifier.fillMaxWidth(),
                     verticalAlignment = Alignment.CenterVertically
                 ) {
-                    Text(text = "Email", modifier = Modifier.width(80.dp), fontSize = 18.sp)
+                    Text(text = "Email", modifier = Modifier.width(80.dp), fontSize = 16.sp)
                     FormField(
                         label = "Email",
                         textState = email,
@@ -87,7 +86,7 @@ fun LoginUI(onSignUpClicked: () -> Unit) {
                     modifier = Modifier.fillMaxWidth(),
                     verticalAlignment = Alignment.Top
                 ) {
-                    Text(text = "Password", modifier = Modifier.width(80.dp).padding(top = 35.dp), fontSize = 18.sp)
+                    Text(text = "Password", modifier = Modifier.width(80.dp).padding(top = 35.dp), fontSize = 16.sp)
                     Column(
                         modifier = Modifier.weight(1f),
                         horizontalAlignment = Alignment.End
@@ -137,7 +136,7 @@ fun LoginUI(onSignUpClicked: () -> Unit) {
             verticalAlignment = Alignment.CenterVertically,
             horizontalArrangement = Arrangement.Center
         ) {
-            Text("Don't have an account?")
+            Text("Don't have an account?",color = MaterialTheme.colorScheme.onBackground)
             TextButton(onClick = onSignUpClicked) {
                 Text("SIGN UP", fontWeight = FontWeight.Bold, color = gunipink)
             }
@@ -145,11 +144,11 @@ fun LoginUI(onSignUpClicked: () -> Unit) {
     }
 }
 
-@Preview(showBackground = true)
+@Preview(showBackground = false)
 @Composable
-fun showLoginUI() {
-    MAD_23012531046_PRACTICAL5Theme {
-        LoginUI(onSignUpClicked = { })
+fun showLoginUI(){
+    MAD_23012531046_PRACTICAL5Theme(darkTheme = true) {
+        LoginUI(onSignUpClicked = {})
     }
 }
 
