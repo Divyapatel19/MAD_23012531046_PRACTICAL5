@@ -33,12 +33,13 @@ import androidx.compose.ui.unit.dp
 import androidx.compose.ui.unit.sp
 import com.example.mad_23012531046_practical5.R
 import com.example.mad_23012531046_practical5.screens.components.FormField
+import com.example.mad_23012531046_practical5.ui.theme.MAD_23012531046_PRACTICAL5Theme
 import com.example.mad_23012531046_practical5.ui.theme.black
 import com.example.mad_23012531046_practical5.ui.theme.blue
 import com.example.mad_23012531046_practical5.ui.theme.gunipink
 
 @Composable
-fun LoginUI(){
+fun LoginUI(onSignUpClicked: () -> Unit) {
     var email by remember { mutableStateOf("") }
     var password by remember { mutableStateOf("") }
 
@@ -99,7 +100,7 @@ fun LoginUI(){
                             isPasswordField = true
                         )
                         TextButton(
-                            onClick = { /*TODO: Handle Forgot Password*/ },
+                            onClick = onSignUpClicked,
 
                             contentPadding = PaddingValues(bottom = 20.dp, end = 10.dp, start = 5.dp),
                             colors = ButtonDefaults.textButtonColors(
@@ -115,7 +116,7 @@ fun LoginUI(){
                 Spacer(modifier = Modifier.height(10.dp))
 
                 Button(
-                    onClick = { /*TODO: Handle Login*/ },
+                    onClick = onSignUpClicked,
                     modifier = Modifier
                         .fillMaxWidth()
                         .height(50.dp),
@@ -137,7 +138,7 @@ fun LoginUI(){
             horizontalArrangement = Arrangement.Center
         ) {
             Text("Don't have an account?")
-            TextButton(onClick = { /*TODO: Handle Sign Up navigation*/ }) {
+            TextButton(onClick = onSignUpClicked) {
                 Text("SIGN UP", fontWeight = FontWeight.Bold, color = gunipink)
             }
         }
@@ -146,8 +147,10 @@ fun LoginUI(){
 
 @Preview(showBackground = true)
 @Composable
-fun showLoginUI(){
-    LoginUI()
+fun showLoginUI() {
+    MAD_23012531046_PRACTICAL5Theme {
+        LoginUI(onSignUpClicked = { })
+    }
 }
 
 

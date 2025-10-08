@@ -39,15 +39,15 @@ import com.example.mad_23012531046_practical5.ui.theme.gunipink
 
 
 @Composable
-fun RegisterUI() {
+fun RegisterUI(onloginClicked: () -> Unit) {
     var name by remember { mutableStateOf("") }
     var phonenumber by remember { mutableStateOf("") }
     var city by remember { mutableStateOf("") }
     var email by remember { mutableStateOf("") }
     var password by remember { mutableStateOf("") }
     var confirmPassword by remember { mutableStateOf("") }
+    val scrollState = rememberScrollState()
 
-    // Main parent Column for the whole screen
     Column(
         modifier = Modifier
             .fillMaxSize()
@@ -61,8 +61,8 @@ fun RegisterUI() {
             painter = painterResource(id = R.drawable.guni_pink_logo),
             contentDescription = "Logo",
             modifier = Modifier
-                .width(400.dp)
-                .height(100.dp) // Adjusted height slightly
+                
+                .height(130.dp) // Adjusted height slightly
                 .align(Alignment.CenterHorizontally)
         )
         Spacer(modifier = Modifier.height(10.dp))
@@ -166,7 +166,7 @@ fun RegisterUI() {
 
                 // Register Button is here, inside the Card's Column
                 Button(
-                    onClick = { /*TODO: Handle Register*/ },
+                    onClick = onloginClicked,
                     modifier = Modifier
                         .fillMaxWidth()
                         .height(50.dp),
@@ -189,12 +189,15 @@ fun RegisterUI() {
             horizontalArrangement = Arrangement.Center
         ) {
             Text("Do You have an account?")
-            TextButton(onClick = { /*TODO: Handle LOGIN navigation*/ }) {
+            TextButton(onClick = onloginClicked) {
                 Text(
                     "LOGIN",
                     fontWeight = FontWeight.Bold,
                     color = gunipink
-                )
+
+
+                        )
+
             }
         }
     } // Main parent Column ends here
@@ -204,7 +207,7 @@ fun RegisterUI() {
 @Preview(showBackground = true)
 @Composable
 fun showRegisterUI() {
-    MAD_23012531046_PRACTICAL5Theme {
-        RegisterUI()
+    MAD_23012531046_PRACTICAL5Theme(darkTheme = false) {
+        RegisterUI() { }
     }
 }
