@@ -1,7 +1,9 @@
 package com.example.mad_23012531046_practical5.screens
 
+import android.content.Context
 import androidx.compose.foundation.Image
 import androidx.compose.foundation.layout.Arrangement
+import androidx.compose.foundation.layout.Box
 import androidx.compose.foundation.layout.Column
 import androidx.compose.foundation.layout.Row
 import androidx.compose.foundation.layout.Spacer
@@ -11,12 +13,14 @@ import androidx.compose.foundation.layout.height
 import androidx.compose.foundation.layout.padding
 import androidx.compose.foundation.layout.width
 import androidx.compose.foundation.rememberScrollState
+import androidx.compose.foundation.shape.RoundedCornerShape
 import androidx.compose.foundation.verticalScroll
 import androidx.compose.material3.Button
 import androidx.compose.material3.ButtonDefaults
 import androidx.compose.material3.Card
 import androidx.compose.material3.CardDefaults
 import androidx.compose.material3.MaterialTheme
+import androidx.compose.material3.Scaffold
 import androidx.compose.material3.Text
 import androidx.compose.material3.TextButton
 import androidx.compose.runtime.Composable
@@ -31,100 +35,185 @@ import androidx.compose.ui.text.font.FontWeight
 import androidx.compose.ui.tooling.preview.Preview
 import androidx.compose.ui.unit.dp
 import androidx.compose.ui.unit.sp
+import androidx.navigation.NavController
 import com.example.mad_23012531046_practical5.R
 import com.example.mad_23012531046_practical5.screens.components.FormField
 import com.example.mad_23012531046_practical5.ui.theme.MAD_23012531046_PRACTICAL5Theme
-import com.example.mad_23012531046_practical5.ui.theme.blue
-import com.example.mad_23012531046_practical5.ui.theme.gunipink
+import com.example.mad_23012531046_practical5.ui.theme.Blue
+import com.example.mad_23012531046_practical5.ui.theme.GuniPink
 
-// SOLUTION 1: Modify the function to accept two distinct actions
+
 @Composable
-fun RegisterUI(onLoginClicked: () -> Unit) {
-    var name by remember { mutableStateOf("") }
-    var phonenumber by remember { mutableStateOf("") }
-    var city by remember { mutableStateOf("") }
+fun RegisterScreen(context: Context, navController: NavController) {
+    Scaffold(modifier = Modifier.fillMaxWidth()) { innerPadding ->
+        Box(modifier = Modifier
+            .fillMaxSize()
+            .padding(innerPadding)) {
+            RegisterUI(navController = navController)
+        }
+    }
+}
+
+fun navigateToLogin(navController: NavController) {
+    navController.navigate("login") {
+        popUpTo("register") {
+            inclusive = true
+        }
+    }
+}
+
+
+@Composable
+fun RegisterUI(navController: NavController? = null){
     var email by remember { mutableStateOf("") }
     var password by remember { mutableStateOf("") }
-    var confirmPassword by remember { mutableStateOf("") }
+    var name by remember { mutableStateOf("") }
+    var num by remember { mutableStateOf("") }
+    var city by remember { mutableStateOf("") }
+    var cnfpassword by remember { mutableStateOf("") }
 
-    Column(
+
+    val scrollState = rememberScrollState()
+
+    Column (
         modifier = Modifier
             .fillMaxSize()
             .padding(20.dp)
-            .verticalScroll(rememberScrollState())
+            .verticalScroll(scrollState)
     ) {
-        Spacer(modifier = Modifier.height(10.dp))
-
+        Spacer(modifier = Modifier.height(20.dp))
         Image(
             painter = painterResource(id = R.drawable.guni_pink_logo),
             contentDescription = "Logo",
             modifier = Modifier
                 .height(130.dp)
                 .align(Alignment.CenterHorizontally)
+
         )
-        Spacer(modifier = Modifier.height(10.dp))
+
+        Spacer(modifier = Modifier.height(20.dp))
 
         Card(
             modifier = Modifier.fillMaxWidth(),
-            shape = MaterialTheme.shapes.medium,
-            elevation = CardDefaults.cardElevation(defaultElevation = 8.dp)
-        ) {
+            shape = RoundedCornerShape(16.dp),
+            elevation = CardDefaults.cardElevation(defaultElevation = 4.dp),
+            //colors = CardDefaults.cardColors(containerColor = MaterialTheme.colorScheme.surface)
+        ){
             Column(
                 modifier = Modifier.padding(20.dp),
                 horizontalAlignment = Alignment.CenterHorizontally
-            ) {
-                // ... (All your Row and FormField elements are correct)
-                Row(modifier=Modifier.fillMaxWidth(),verticalAlignment=Alignment.CenterVertically){Text(text="Name",modifier=Modifier.width(100.dp),fontSize=15.sp);FormField(label="Name",textState=name,onTextField={name=it})}
-                Spacer(modifier=Modifier.height(5.dp))
-                Row(modifier=Modifier.fillMaxWidth(),verticalAlignment=Alignment.CenterVertically){Text(text="Phone No.",modifier=Modifier.width(100.dp),fontSize=15.sp);FormField(label="Phone Number",textState=phonenumber,onTextField={phonenumber=it})}
-                Spacer(modifier=Modifier.height(8.dp))
-                Row(modifier=Modifier.fillMaxWidth(),verticalAlignment=Alignment.CenterVertically){Text(text="City",modifier=Modifier.width(100.dp),fontSize=15.sp);FormField(label="City",textState=city,onTextField={city=it})}
-                Spacer(modifier=Modifier.height(8.dp))
-                Row(modifier=Modifier.fillMaxWidth(),verticalAlignment=Alignment.CenterVertically){Text(text="Email",modifier=Modifier.width(100.dp),fontSize=15.sp);FormField(label="Email",textState=email,onTextField={email=it})}
-                Spacer(modifier=Modifier.height(8.dp))
-                Row(modifier=Modifier.fillMaxWidth(),verticalAlignment=Alignment.CenterVertically){Text(text="Password",modifier=Modifier.width(100.dp),fontSize=15.sp);FormField(label="Password",textState=password,onTextField={password=it},isPasswordField=true)}
-                Spacer(modifier=Modifier.height(8.dp))
-                Row(modifier=Modifier.fillMaxWidth(),verticalAlignment=Alignment.CenterVertically){Text(text="Confirm Pwd",modifier=Modifier.width(100.dp),fontSize=15.sp);FormField(label="Confirm Password",textState=confirmPassword,onTextField={confirmPassword=it},isPasswordField=true)}
+            ){
+                // Name Row
+                Row(
+                    modifier = Modifier.fillMaxWidth(),
+                    verticalAlignment = Alignment.CenterVertically
+                ) {
+                    Text(text = "Name", modifier = Modifier.width(100.dp), fontSize = 16.sp)
+                    FormField(
+                        label = "Name",
+                        textState = name,
+                        onTextField = { name = it }
+                    )
+                }
+
+                Row(
+                    modifier = Modifier.fillMaxWidth(),
+                    verticalAlignment = Alignment.CenterVertically
+                ) {
+                    Text(text = "Phone Number", modifier = Modifier.width(100.dp), fontSize = 16.sp)
+                    FormField(
+                        label = "Phone Number",
+                        textState = num,
+                        onTextField = { num = it },
+                        isNumber = true
+                    )
+                }
+
+                Row(
+                    modifier = Modifier.fillMaxWidth(),
+                    verticalAlignment = Alignment.CenterVertically
+                ) {
+                    Text(text = "City", modifier = Modifier.width(100.dp), fontSize = 16.sp)
+                    FormField(
+                        label = "City",
+                        textState = city,
+                        onTextField = { city = it }
+                    )
+                }
+
+                Row(
+                    modifier = Modifier.fillMaxWidth(),
+                    verticalAlignment = Alignment.CenterVertically
+                ) {
+                    Text(text = "Email", modifier = Modifier.width(100.dp), fontSize = 16.sp)
+                    FormField(
+                        label = "Email",
+                        textState = email,
+                        onTextField = { email = it }
+                    )
+                }
+
+                Row(
+                    modifier = Modifier.fillMaxWidth(),
+                    verticalAlignment = Alignment.CenterVertically
+                ) {
+                    Text(text = "Password", modifier = Modifier.width(100.dp), fontSize = 16.sp)
+                    FormField(
+                        label = "Password",
+                        textState = password,
+                        onTextField = { password = it },
+                        isPasswordField = true
+                    )
+                }
+
+                Row(
+                    modifier = Modifier.fillMaxWidth(),
+                    verticalAlignment = Alignment.CenterVertically
+                ) {
+                    Text(text = "Confirm Password", modifier = Modifier.width(100.dp), fontSize = 16.sp)
+                    FormField(
+                        label = "Password Again",
+                        textState = cnfpassword,
+                        onTextField = { cnfpassword = it },
+                        isPasswordField = true
+                    )
+                }
+
                 Spacer(modifier = Modifier.height(10.dp))
 
-                // SOLUTION 2: Assign the correct click action to the "Register" button.
                 Button(
-                    onClick = {  }, // This should handle registration logic.
+                    onClick = { /*TODO: Handle Login*/ },
                     modifier = Modifier
                         .fillMaxWidth()
                         .height(50.dp),
-                    colors = ButtonDefaults.buttonColors(
-                        containerColor = blue
+                    colors = androidx.compose.material3.ButtonDefaults.buttonColors(
+                        containerColor = Blue
                     )
                 ) {
                     Text(text = "Register", fontSize = 18.sp)
                 }
+
             }
         }
 
-        Spacer(modifier = Modifier.height(20.dp))
-
-        // This is correct: the "LOGIN" button should navigate back.
+        Spacer(modifier = Modifier.weight(2f))
         Row(
             modifier = Modifier.fillMaxWidth(),
             verticalAlignment = Alignment.CenterVertically,
             horizontalArrangement = Arrangement.Center
         ) {
-            Text("Don you have an account?", color = MaterialTheme.colorScheme.onBackground)
-            TextButton(onClick = { onLoginClicked() }) {
-                Text("LOGIN", fontWeight = FontWeight.Bold, color = gunipink)
-
-
+            Text("Already have an account?", color = MaterialTheme.colorScheme.onBackground)
+            TextButton(onClick = { navController?.let { navigateToLogin(it) } }) {
+                Text("LOGIN", fontWeight = FontWeight.Bold, color = GuniPink)
             }
         }
     }
 }
 
-// SOLUTION 3: Update the Preview to match the new function signature.
-@Preview(showBackground = false)
+@Preview(showBackground = true)
 @Composable
 fun showRegisterUI(){
-    MAD_23012531046_PRACTICAL5Theme(darkTheme = true) {
-        RegisterUI(onLoginClicked = {})
+    MAD_23012531046_PRACTICAL5Theme(darkTheme = false) {
+        RegisterUI(navController = null)
     }
 }

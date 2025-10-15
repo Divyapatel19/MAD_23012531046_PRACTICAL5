@@ -1,9 +1,5 @@
 package com.example.mad_23012531046_practical5.screens.components
 
-import com.example.mad_23012531046_practical5.ui.theme.MAD_23012531046_PRACTICAL5Theme
-
-
-
 import androidx.compose.foundation.layout.Row
 import androidx.compose.foundation.layout.fillMaxWidth
 import androidx.compose.foundation.layout.padding

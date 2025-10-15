@@ -1,7 +1,10 @@
 package com.example.mad_23012531046_practical5.screens
 
+import android.content.Context
+import android.widget.MediaController
 import androidx.compose.foundation.Image
 import androidx.compose.foundation.layout.Arrangement
+import androidx.compose.foundation.layout.Box
 import androidx.compose.foundation.layout.Column
 import androidx.compose.foundation.layout.PaddingValues
 import androidx.compose.foundation.layout.Row
@@ -16,6 +19,7 @@ import androidx.compose.material3.ButtonDefaults
 import androidx.compose.material3.Card
 import androidx.compose.material3.CardDefaults
 import androidx.compose.material3.MaterialTheme
+import androidx.compose.material3.Scaffold
 import androidx.compose.material3.Text
 import androidx.compose.material3.TextButton
 import androidx.compose.runtime.Composable
@@ -30,15 +34,36 @@ import androidx.compose.ui.text.font.FontWeight
 import androidx.compose.ui.tooling.preview.Preview
 import androidx.compose.ui.unit.dp
 import androidx.compose.ui.unit.sp
+import androidx.navigation.NavController
 import com.example.mad_23012531046_practical5.R
 import com.example.mad_23012531046_practical5.screens.components.FormField
 import com.example.mad_23012531046_practical5.ui.theme.MAD_23012531046_PRACTICAL5Theme
-import com.example.mad_23012531046_practical5.ui.theme.black
-import com.example.mad_23012531046_practical5.ui.theme.blue
-import com.example.mad_23012531046_practical5.ui.theme.gunipink
+import com.example.mad_23012531046_practical5.ui.theme.Black
+import com.example.mad_23012531046_practical5.ui.theme.Blue
+import com.example.mad_23012531046_practical5.ui.theme.GuniPink
+
+
 
 @Composable
-fun LoginUI(onSignUpClicked: () -> Unit) {
+fun LoginScreen(context: Context,navController: NavController) {
+    Scaffold(modifier = Modifier.fillMaxWidth()) {
+            innerpading ->
+        Box(modifier = Modifier.fillMaxSize().padding(innerpading)){
+            LoginUI(navController = navController)
+        }
+    }
+}
+
+fun navigateToRegister(navController: NavController) {
+    navController.navigate("register"){
+        popUpTo("login"){
+            inclusive = true
+        }
+    }
+}
+
+@Composable
+fun LoginUI( navController: NavController ?= null){
     var email by remember { mutableStateOf("") }
     var password by remember { mutableStateOf("") }
 
@@ -72,7 +97,7 @@ fun LoginUI(onSignUpClicked: () -> Unit) {
                     modifier = Modifier.fillMaxWidth(),
                     verticalAlignment = Alignment.CenterVertically
                 ) {
-                    Text(text = "Email", modifier = Modifier.width(80.dp), fontSize = 16.sp)
+                    Text(text = "Email", modifier = Modifier.width(100.dp), fontSize = 18.sp)
                     FormField(
                         label = "Email",
                         textState = email,
@@ -86,7 +111,7 @@ fun LoginUI(onSignUpClicked: () -> Unit) {
                     modifier = Modifier.fillMaxWidth(),
                     verticalAlignment = Alignment.Top
                 ) {
-                    Text(text = "Password", modifier = Modifier.width(80.dp).padding(top = 35.dp), fontSize = 16.sp)
+                    Text(text = "Password", modifier = Modifier.width(100.dp).padding(top = 25.dp), fontSize = 18.sp)
                     Column(
                         modifier = Modifier.weight(1f),
                         horizontalAlignment = Alignment.End
@@ -99,14 +124,13 @@ fun LoginUI(onSignUpClicked: () -> Unit) {
                             isPasswordField = true
                         )
                         TextButton(
-                            onClick = onSignUpClicked,
-
+                            onClick = { /*TODO: Handle Forgot Password*/ },
                             contentPadding = PaddingValues(bottom = 20.dp, end = 10.dp, start = 5.dp),
                             colors = ButtonDefaults.textButtonColors(
-                                contentColor = black
+                                contentColor = Black
                             )
                         ) {
-                            Text(text = "Forgot Password?")
+                            Text(text = "Forgot Password?", color = MaterialTheme.colorScheme.onBackground)
                         }
                     }
                 }
@@ -115,12 +139,12 @@ fun LoginUI(onSignUpClicked: () -> Unit) {
                 Spacer(modifier = Modifier.height(10.dp))
 
                 Button(
-                    onClick = onSignUpClicked,
+                    onClick = { /*TODO: Handle Login*/ },
                     modifier = Modifier
                         .fillMaxWidth()
                         .height(50.dp),
                     colors = ButtonDefaults.buttonColors(
-                        containerColor = blue
+                        containerColor = Blue
                     )
                 ) {
                     Text(text = "Login", fontSize = 18.sp)
@@ -130,25 +154,24 @@ fun LoginUI(onSignUpClicked: () -> Unit) {
         }
 
         Spacer(modifier = Modifier.height(50.dp))
-        //Spacer(modifier = Modifier.weight(1f))
+        //Spacer(modifier = Modifier.weight(2f))
         Row(
             modifier = Modifier.fillMaxWidth(),
             verticalAlignment = Alignment.CenterVertically,
             horizontalArrangement = Arrangement.Center
         ) {
-            Text("Don't have an account?",color = MaterialTheme.colorScheme.onBackground)
-            TextButton(onClick = onSignUpClicked) {
-                Text("SIGN UP", fontWeight = FontWeight.Bold, color = gunipink)
+            Text("Don\'t have an account?", color = MaterialTheme.colorScheme.onBackground)
+            TextButton(onClick = { navController?.let { navigateToRegister(it) } }) {
+                Text("SIGN UP", fontWeight = FontWeight.Bold, color = GuniPink)
             }
         }
     }
 }
-
-@Preview(showBackground = false)
+@Preview(showBackground = true)
 @Composable
 fun showLoginUI(){
-    MAD_23012531046_PRACTICAL5Theme(darkTheme = true) {
-        LoginUI(onSignUpClicked = {})
+    MAD_23012531046_PRACTICAL5Theme(darkTheme = false) {
+        LoginUI(navController = null)
     }
 }
 
