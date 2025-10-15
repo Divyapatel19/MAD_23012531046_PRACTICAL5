@@ -24,4 +24,5 @@ This is an Android application built with Jetpack Compose that demonstrates a si
 
 | Login Screen | Registration Screen |
 |:---:|:---:|
-| *Add login screen screenshot here* | *Add registration screen screenshot here* |
+| ![IMG-20251015-WA0002 1](https://github.com/user-attachments/assets/4dea10d5-c860-4f36-9e44-c2894bcafef1)
+ ||
