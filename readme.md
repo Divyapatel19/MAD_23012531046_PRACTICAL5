@@ -33,12 +33,5 @@
  | Login Screen | Registration Screen |
  |:---:|:---:|
 | <img src="https://github.com/user-attachments/assets/63afecc7-fbc9-4c69-b756-7b69ff9c07e9" width="200" height="350" /> | <img src="https://github.com/user-attachments/assets/f694985d-97b3-4376-8370-6c90ed026bb6" width="200" height="350" /> |
-
-
  
-​## Tech Stack
-​
- *   **Kotlin:** Primary language for Android development.
- *   **Jetpack Compose:** Android's modern toolkit for building native UI.
- *   **Material 3:** Google's latest design system for Android.
  
