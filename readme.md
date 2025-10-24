@@ -1,28 +1,47 @@
-# MAD_23012531046_PRACTICAL5: Login and Registration App
 
-**AIM:** To create an Android Application that includes Login and Registration screens using Jetpack Compose.
+ # MAD_23012531046_PRACTICAL5: Login and Registration App
 
-## Description
+ **AIM:** To create an Android Application that includes Login and Registration screens using Jetpack Compose.
 
-This is an Android application built with Jetpack Compose that demonstrates a simple user registration and login flow. The application provides a user-friendly interface for new users to create an account and for existing users to log in. It showcases the use of various Jetpack Compose components, state management, and navigation.
+ ## Description
 
-## Features
+ This is an Android application built with Jetpack Compose that demonstrates a simple user registration and login flow. The application provides a user-friendly interface for new users to create an account and for existing users to log in. It showcases the use of various Jetpack Compose components, state management, and navigation.
+ # MAD_23012531046_PRACTICAL5
 
-*   **User Registration Screen**: A comprehensive registration form with fields for name, phone number, city, email, and password.
-*   **User Login Screen**: A simple and intuitive login screen for existing users.
-*   **Navigation**: Seamless navigation between the login and registration screens using Jetpack Navigation Compose.
-*   **UI/UX**: A clean and modern user interface built with Material 3 components.
+ ## Features
+ This project is an Android application that demonstrates user login and registration flows, built with Jetpack Compose. It's a practical assignment for the Mobile Application Development course.
 
-## Technologies Used
+ *   **User Registration Screen**: A comprehensive registration form with fields for name, phone number, city, email, and password.
+ *   **User Login Screen**: A simple and intuitive login screen for existing users.
+ *   **Navigation**: Seamless navigation between the login and registration screens using Jetpack Navigation Compose.
+ *   **UI/UX**: A clean and modern user interface built with Material 3 components.
+ ## Overview
 
-*   Kotlin
-*   Jetpack Compose
-*   Material 3
-*   Jetpack Navigation Compose
+ ## Technologies Used
+ The application consists of two main screens: a login screen for existing users and a registration screen for new users. The UI is built entirely using modern Android development tools and libraries.
 
+ *   Kotlin
+ *   Jetpack Compose
+ *   Material 3
+ *   Jetpack Navigation Compose
+### Features
+ * **User Authentication:** Simple login and registration functionality.
+ * **Jetpack Compose:** The UI is declaratively built with Jetpack Compose.
+ * **Clean UI:** A simple and clean user interface design.
+ * **Navigation:** Navigation between screens is handled using Navigation-Compose.
 ## Screenshots
 
-| Login Screen | Registration Screen |
-|:---:|:---:|
-| ![IMG-20251015-WA0002 1](https://github.com/user-attachments/assets/4dea10d5-c860-4f36-9e44-c2894bcafef1)
- ||
+
+ | Login Screen | Registration Screen |
+ |:---:|:---:|
+ | *Add login screen screenshot here* | *Add registration screen screenshot here* |
+| <img src="https://github.com/user-attachments/assets/63afecc7-fbc9-4c69-b756-7b69ff9c07e9" width="200" height="350" /> | <img src="https://github.com/user-attachments/assets/f694985d-97b3-4376-8370-6c90ed026bb6" width="200" height="350" /> |
+
+
+ 
+​## Tech Stack
+​
+ *   **Kotlin:** Primary language for Android development.
+ *   **Jetpack Compose:** Android's modern toolkit for building native UI.
+ *   **Material 3:** Google's latest design system for Android.
+ 
