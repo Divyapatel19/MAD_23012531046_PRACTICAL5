@@ -32,6 +32,6 @@
 
  | Login Screen | Registration Screen |
  |:---:|:---:|
-|<img width="250" height="450" alt="Screenshot 2025-10-26 113648" src="https://github.com/user-attachments/assets/468d91fb-de22-4d9d-bbd6-50025e6d7060" />|<img width="250" height="450" alt="Screenshot 2025-10-26 114021" src="https://github.com/user-attachments/assets/e8ff0068-c62b-4a48-a473-8b539a4f2982" />|
+|<img width="250" height="500" alt="Screenshot 2025-10-26 113648" src="https://github.com/user-attachments/assets/468d91fb-de22-4d9d-bbd6-50025e6d7060" />|<img width="250" height="500" alt="Screenshot 2025-10-26 114021" src="https://github.com/user-attachments/assets/e8ff0068-c62b-4a48-a473-8b539a4f2982" />|
  
  
